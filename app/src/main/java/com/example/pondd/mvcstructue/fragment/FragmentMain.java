@@ -6,12 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.pondd.mvcstructue.R;
-import com.example.pondd.mvcstructue.fragment.manager.bus.BusEventPill;
-import com.inthecheesefactory.thecheeselibrary.manager.bus.MainBus;
-import com.squareup.otto.Subscribe;
 
 /**
  * Created by nuuneoi on 11/16/2014.

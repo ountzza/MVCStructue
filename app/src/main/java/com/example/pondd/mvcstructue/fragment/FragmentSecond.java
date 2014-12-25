@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.pondd.mvcstructue.R;
-import com.example.pondd.mvcstructue.fragment.manager.bus.BusEventPill;
+import com.example.pondd.mvcstructue.manager.bus.event.BusEventPill;
 import com.inthecheesefactory.thecheeselibrary.manager.bus.MainBus;
 
 /**

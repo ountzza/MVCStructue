@@ -10,8 +10,7 @@ import android.widget.Toast;
 import com.example.pondd.mvcstructue.R;
 import com.example.pondd.mvcstructue.fragment.FragmentMain;
 import com.example.pondd.mvcstructue.fragment.FragmentSecond;
-import com.example.pondd.mvcstructue.fragment.manager.bus.BusEventPill;
-import com.example.pondd.mvcstructue.utils.ScreenUtils;
+import com.example.pondd.mvcstructue.manager.bus.event.BusEventPill;
 import com.inthecheesefactory.thecheeselibrary.manager.bus.MainBus;
 import com.squareup.otto.Subscribe;
 

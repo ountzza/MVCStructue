@@ -1,4 +1,4 @@
-package com.example.pondd.mvcstructue.fragment.manager.bus;
+package com.example.pondd.mvcstructue.manager.bus.event;
 
 /**
  * Created by nuuneoi on 12/4/2014.
