@@ -8,7 +8,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pondd.mvcstructue.R;
+import com.example.pondd.mvcstructue.fragment.FragmentMain;
+import com.example.pondd.mvcstructue.fragment.FragmentSecond;
 import com.example.pondd.mvcstructue.utils.ScreenUtils;
+import com.inthecheesefactory.thecheeselibrary.manager.bus.MainBus;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -18,18 +21,29 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView textView = (TextView) findViewById(R.id.textView);
-        textView.setText("Height:"+ScreenUtils.getInstance().getScreenHeight()+
-                        "Width:"+ScreenUtils.getInstance().getScreenWidth());
+//        TextView textView = (TextView) findViewById(R.id.textView);
+//        textView.setText("Height:"+ScreenUtils.getInstance().getScreenHeight()+
+//                        "Width:"+ScreenUtils.getInstance().getScreenWidth());
 
-        Toast.makeText(getApplicationContext(),
-                "Height:"+ScreenUtils.getInstance().getScreenHeight()+
-                "Width:"+ScreenUtils.getInstance().getScreenWidth(),
-                Toast.LENGTH_LONG).show();
-
-
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.contentContainer, FragmentMain.newInstance(), "FragmentMain")
+                    .commit();
+        }
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MainBus.getInstance().register(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MainBus.getInstance().unregister(this);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -47,6 +61,11 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.contentContainer, FragmentSecond.newInstance(), "FragmentSecond")
+                    .addToBackStack(null)
+                    .commit();
+
             return true;
         }
 
