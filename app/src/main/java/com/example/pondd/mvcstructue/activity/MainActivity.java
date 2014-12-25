@@ -53,7 +53,7 @@ public class MainActivity extends ActionBarActivity {
         String text = event.getValue();
 
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
-        getSupportFragmentManager().popBackStackImmediate();
+        onBackPressed();
         FragmentMain fragmentMain = (FragmentMain) getSupportFragmentManager().findFragmentByTag("FragmentMain");
         fragmentMain.setName(text);
 
