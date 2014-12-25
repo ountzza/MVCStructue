@@ -17,13 +17,14 @@ import com.squareup.otto.Subscribe;
 
 
 public class MainActivity extends ActionBarActivity {
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        TextView textView = (TextView) findViewById(R.id.textView);
+//       textView = (TextView) findViewById(R.id.textView);
 //        textView.setText("Height:"+ScreenUtils.getInstance().getScreenHeight()+
 //                        "Width:"+ScreenUtils.getInstance().getScreenWidth());
 
@@ -49,10 +50,13 @@ public class MainActivity extends ActionBarActivity {
 
     @Subscribe
     public void busEventRecived(BusEventPill event) {
-        String text = event.getValue()
+        String text = event.getValue();
+
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
-//        TextView textView = (TextView)findViewById(R.id.textView);
-//        textView.setText(text);
+        getSupportFragmentManager().popBackStackImmediate();
+        FragmentMain fragmentMain = (FragmentMain) getSupportFragmentManager().findFragmentByTag("FragmentMain");
+        fragmentMain.setName(text);
+
     }
 
     @Override
