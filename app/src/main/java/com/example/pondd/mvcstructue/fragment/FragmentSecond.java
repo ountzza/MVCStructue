@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.pondd.mvcstructue.R;
+import com.example.pondd.mvcstructue.fragment.manager.bus.BusEventPill;
 import com.inthecheesefactory.thecheeselibrary.manager.bus.MainBus;
 
 /**
@@ -18,7 +19,7 @@ public class FragmentSecond extends Fragment {
     private final View.OnClickListener buttonClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            MainBus.getInstance().post(new BusEventPill(editText.getText().toString()));
         }
     };
     EditText editText;

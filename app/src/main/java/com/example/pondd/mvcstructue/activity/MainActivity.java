@@ -10,8 +10,10 @@ import android.widget.Toast;
 import com.example.pondd.mvcstructue.R;
 import com.example.pondd.mvcstructue.fragment.FragmentMain;
 import com.example.pondd.mvcstructue.fragment.FragmentSecond;
+import com.example.pondd.mvcstructue.fragment.manager.bus.BusEventPill;
 import com.example.pondd.mvcstructue.utils.ScreenUtils;
 import com.inthecheesefactory.thecheeselibrary.manager.bus.MainBus;
+import com.squareup.otto.Subscribe;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -43,6 +45,14 @@ public class MainActivity extends ActionBarActivity {
     protected void onPause() {
         super.onPause();
         MainBus.getInstance().unregister(this);
+    }
+
+    @Subscribe
+    public void busEventRecived(BusEventPill event) {
+        String text = event.getValue()
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+//        TextView textView = (TextView)findViewById(R.id.textView);
+//        textView.setText(text);
     }
 
     @Override
